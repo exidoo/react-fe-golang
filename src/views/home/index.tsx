@@ -1,24 +1,20 @@
-// import FC from react
-import type { FC } from 'react';
+// Containers
+import Sidebar from '@/containers/global/sidebar';
+import ChartData from '@/containers/dashboard/home/Chart';
 
-// import Link from react-router
-import { Link } from 'react-router';
-
-const Home: FC = () => {
+const Home = () => {
   return (
-    <div className="p-5 mb-4 bg-light rounded-5 shadow-sm">
-      <div className="container-fluid py-5">
-        <h1 className="display-5 fw-bold">FULLTSACK DEVELOPER</h1>
-        <p className="col-md-12 fs-4">Belajar FullStack Developer dengan Golang dan React TypeScript di SantriKoding.com</p>
-        <hr />
-        <Link to="/register" className="btn btn-primary btn-lg me-3">
-          REGISTER
-        </Link>
-        <Link to="/login" className="btn btn-secondary btn-lg">
-          LOGIN
-        </Link>
+    <main className="w-full flex min-h-screen">
+      {/* Sidebar di sebelah kiri */}
+      <div className="">
+        <Sidebar />
       </div>
-    </div>
+
+      {/* Content di sebelah kanan */}
+      <section className="flex-1">
+        <ChartData />
+      </section>
+    </main>
   );
 };
 

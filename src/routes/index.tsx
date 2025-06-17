@@ -13,6 +13,8 @@ import Register from '../views/auth/register.tsx';
 //import view login
 import Login from '../views/auth/login.tsx';
 
+import Home from '@/views/home/index.tsx';
+
 export default function AppRoutes() {
   // Menggunakan useContext untuk mendapatkan nilai dari AuthContext
   const auth = useContext(AuthContext);
@@ -30,6 +32,9 @@ export default function AppRoutes() {
 
       {/* route "/login" */}
       <Route path="/login" element={isAuthenticated ? <Navigate to="/admin/dashboard" replace /> : <Login />} />
+
+      {/* route "/admin/dashboard" */}
+      <Route path="/admin/dashboard" element={isAuthenticated ? <Home /> : <Navigate to="/login" replace />} />
     </Routes>
   );
 }
