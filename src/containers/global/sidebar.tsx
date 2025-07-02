@@ -3,14 +3,15 @@ import { useState } from 'react';
 
 // Icons
 import { Home, Menu, UserCog2 } from 'lucide-react';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
 const Sidebar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const location = useLocation();
 
   const sidebarItems = [
-    { icon: Home, label: 'Dashboard', active: true },
-    { icon: UserCog2, label: 'User Management' },
+    { icon: Home, label: 'Dashboard', to: '/dashboard' },
+    { icon: UserCog2, label: 'User Management', to: '/user-management' },
   ];
   return (
     <div className={`${sidebarOpen ? 'w-64' : 'w-16'} h-screen bg-white shadow-2xl flex flex-col transition-all duration-300`}>
@@ -23,14 +24,16 @@ const Sidebar = () => {
       </div>
 
       {/* Navigation */}
-      <div className=" h-full flex flex-col justify-center  ">
+      <div className=" h-full flex flex-col  ">
         <nav className="p-4 ">
           <ul className="space-y-2">
             {sidebarItems.map((item, index) => {
               const IconComponent = item.icon;
+              const isActive = location.pathname === item.to;
+
               return (
                 <li key={index}>
-                  <Link to="#" className={`flex items-center  rounded-lg transition-colors  ${item.active ? 'bg-blue-50 text-blue-600 border-r-2 border-blue-600 p-[6px]' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 p-[6px]'}`}>
+                  <Link to={item.to} className={`flex items-center rounded-lg transition-colors p-[6px] ${isActive ? 'bg-blue-50 text-blue-600 border-r-2 border-blue-600' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}>
                     <IconComponent size={20} />
                     {sidebarOpen && <span className="ml-3 font-medium">{item.label}</span>}
                   </Link>

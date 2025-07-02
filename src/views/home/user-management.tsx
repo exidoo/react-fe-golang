@@ -1,9 +1,9 @@
 // Containers
 import Header from '@/containers/global/header';
 import Sidebar from '@/containers/global/sidebar';
-import ChartData from '@/containers/dashboard/home/chart';
+import UserManagement from '@/containers/dashboard/user-management/userManagement';
 
-const HomePage = () => {
+const UserManagementPage = () => {
   return (
     <main className="w-full flex min-h-screen">
       {/* Sidebar di sebelah kiri */}
@@ -12,12 +12,12 @@ const HomePage = () => {
       </div>
 
       {/* Content di sebelah kanan */}
-      <section className="flex-1 flex flex-col justify-center mx-auto">
+      <section className="flex-1 flex flex-col  mx-auto">
         <Header />
-        <ChartData />
+        <UserManagement />
       </section>
     </main>
   );
 };
 
-export default HomePage;
+export default UserManagementPage;

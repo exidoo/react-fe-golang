@@ -1,37 +1,17 @@
 // React Hooks
 import { useAuthUser } from '@/hooks/auth/useAuthUser';
+import { useLogout } from '@/hooks/auth/useLogout';
 
 // React Tools
-import { useState, useRef, useEffect, useContext } from 'react';
-
-// Cookies
-import Cookies from 'js-cookie';
-
-// React Router
-import { useNavigate } from 'react-router';
-
-// Auth Context
-import { AuthContext } from '@/context/AuthContext';
+import { useState, useRef, useEffect } from 'react';
 
 const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Ambil data user
+  // Ambil data user dan logout function
   const user = useAuthUser();
-
-  // Router
-  const navigate = useNavigate();
-
-  // Auth Context (Logout)
-  const auth = useContext(AuthContext);
-
-  const handleLogout = () => {
-    Cookies.remove('token');
-    Cookies.remove('user');
-    auth?.setIsAuthenticated(false);
-    navigate('/login');
-  };
+  const logout = useLogout();
 
   // Menutup dropdown jika klik di luar
   useEffect(() => {
@@ -59,8 +39,8 @@ const Header = () => {
 
           {/* Dropdown */}
           {showDropdown && (
-            <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg py-2 z-50">
-              <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
+            <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg  z-50">
+              <button onClick={logout} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
                 Logout
               </button>
             </div>

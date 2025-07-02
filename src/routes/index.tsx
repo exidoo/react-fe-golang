@@ -7,13 +7,11 @@ import { AuthContext } from '../context/AuthContext';
 //import react router dom
 import { Routes, Route, Navigate } from 'react-router';
 
-//import view register
-import Register from '../views/auth/register.tsx';
-
-//import view login
-import Login from '../views/auth/login.tsx';
-
+//import view
+import Register from '@/views/auth/register.tsx';
+import Login from '@/views/auth/login.tsx';
 import Home from '@/views/home/index.tsx';
+import UserManagement from '@/views/home/user-management';
 
 export default function AppRoutes() {
   // Menggunakan useContext untuk mendapatkan nilai dari AuthContext
@@ -25,16 +23,19 @@ export default function AppRoutes() {
   return (
     <Routes>
       {/* route "/" */}
-      <Route path="/" element={<Navigate to={isAuthenticated ? '/admin/dashboard' : '/login'} replace />} />
+      <Route path="/" element={<Home />} />
 
       {/* route "/register" */}
-      <Route path="/register" element={isAuthenticated ? <Navigate to="/admin/dashboard" replace /> : <Register />} />
+      <Route path="/register" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Register />} />
 
       {/* route "/login" */}
-      <Route path="/login" element={isAuthenticated ? <Navigate to="/admin/dashboard" replace /> : <Login />} />
+      <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Login />} />
 
-      {/* route "/admin/dashboard" */}
-      <Route path="/admin/dashboard" element={isAuthenticated ? <Home /> : <Navigate to="/login" replace />} />
+      {/* route "/dashboard" */}
+      <Route path="/dashboard" element={isAuthenticated ? <Home /> : <Navigate to="/login" replace />} />
+
+      {/* route "/user-management" */}
+      <Route path="/user-management" element={isAuthenticated ? <UserManagement /> : <Navigate to="/login" replace />} />
     </Routes>
   );
 }
