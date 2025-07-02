@@ -7,7 +7,7 @@ import AppRoutes from './routes';
 const App: FC = () => {
   return (
     <div>
-      <div className="container">
+      <div className=" h-full">
         <AppRoutes />
       </div>
     </div>

@@ -1,4 +1,5 @@
 // Containers
+import Header from '@/containers/global/header';
 import Sidebar from '@/containers/global/sidebar';
 import ChartData from '@/containers/dashboard/home/Chart';
 
@@ -11,7 +12,8 @@ const Home = () => {
       </div>
 
       {/* Content di sebelah kanan */}
-      <section className="flex-1">
+      <section className="flex-1 flex flex-col justify-center mx-auto">
+        <Header />
         <ChartData />
       </section>
     </main>
