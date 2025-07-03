@@ -14,7 +14,7 @@ const Sidebar = () => {
     { icon: UserCog2, label: 'User Management', to: '/user-management' },
   ];
   return (
-    <div className={`${sidebarOpen ? 'w-64' : 'w-16'} h-screen bg-white shadow-2xl flex flex-col transition-all duration-300`}>
+    <div className={`${sidebarOpen ? 'w-64' : 'w-16'} h-[100%] bg-white shadow-2xl flex flex-col transition-all duration-300`}>
       {/* Sidebar Header */}
       <div className="flex items-center justify-between p-4  ">
         {sidebarOpen && <h1 className="text-xl font-bold text-gray-800">Dashboard</h1>}

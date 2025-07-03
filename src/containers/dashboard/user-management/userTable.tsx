@@ -39,7 +39,7 @@ export function UserTable<TData, TValue>({ columns, data }: DataTableProps<TData
   });
 
   return (
-    <div className="rounded-md border p-4 space-y-4">
+    <div className="rounded-md border p-4 space-y-4 ">
       {/* Table */}
       <Table>
         <TableHeader>
