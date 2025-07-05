@@ -1,10 +1,10 @@
-// import useMutation dari '@tanstack/react-query';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMutation } from '@tanstack/react-query';
 
-//import service API
+// import service API
 import Api from '@/helpers/Api';
 
-//interface LoginRequest
+// interface LoginRequest
 interface LoginRequest {
   username: string;
   password: string;
@@ -14,11 +14,20 @@ export const useLogin = () => {
   return useMutation({
     // mutation untuk login
     mutationFn: async (data: LoginRequest) => {
-      //menggunakan service API untuk login
-      const response = await Api.post('/login', data);
+      try {
+        const response = await Api.post('/login', data);
 
-      //mengembalikan response data
-      return response.data;
+   
+
+        return response.data;
+      } catch (error: any) {
+        // Tangani error dari Axios atau fetch
+        const message =
+          error.response?.data?.message ||
+          error.message ||
+          'Terjadi kesalahan saat menghubungi server.';
+        throw new Error(message);
+      }
     },
   });
 };

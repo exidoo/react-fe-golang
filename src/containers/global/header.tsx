@@ -28,7 +28,7 @@ const Header = () => {
     <header className="bg-transparent px-6 py-4 relative">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <h2 className="text-xl font-bold text-gray-700">Semangat Pagi, {user?.name}</h2>
+          <h2 className="text-xl font-bold   text-gray-700">Semangat Pagi, {user?.name}</h2>
         </div>
 
         <div className="relative" ref={dropdownRef}>
