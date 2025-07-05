@@ -11,7 +11,7 @@ import { Routes, Route, Navigate } from 'react-router';
 import Register from '@/views/auth/register.tsx';
 import Login from '@/views/auth/login.tsx';
 import Home from '@/views/home/index.tsx';
-import UserManagement from '@/views/home/user-management';
+import UserManagement from '@/views/home/userManagement';
 
 export default function AppRoutes() {
   // Menggunakan useContext untuk mendapatkan nilai dari AuthContext
